@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>canvas1</title>
+  </head>
+  <body>
+    <canvas width="500" height="500" id="canvas"></canvas>
+    <script>
+      /** @type {HTMLCanvasElement} */
+      // 三角形
+
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#f60"; // 填充色
+      ctx.beginPath();
+      ctx.moveTo(100, 20);
+      ctx.lineTo(20, 30);
+      ctx.lineTo(50, 50);
+      ctx.closePath();
+      ctx.fill();
+      ctx.strokeStyle = "rgb(0, 255, 0)"; // 线条颜色
+      ctx.lineWidth = 2; // 线条宽度
+      ctx.stroke(); // 绘制已定义的路径
+
+      // 三次贝塞尔曲线
+      ctx.fillStyle = "#f00";
+      ctx.beginPath();
+      ctx.moveTo(10, 100);
+      // bezierCurveTo(第一个贝塞尔控制点的 x 坐标, 第一个贝塞尔控制点的 y 坐标, 第二个贝塞尔控制点的 x 坐标, 第二个贝塞尔控制点的 y 坐标, 结束点的 x 坐标, 结束点的 y 坐标)
+      ctx.bezierCurveTo(50, 150, 150, 20, 200, 100);
+      ctx.lineTo(250, 150);
+      ctx.lineTo(10, 150);
+      ctx.closePath();
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "#000";
+      ctx.stroke();
+
+      // 线性渐变色文字
+      // createLinearGradient(渐变开始点的 x 坐标, 渐变开始点的 y 坐标, 渐变结束点的 x 坐标, 渐变结束点的 y 坐标)
+      const grad = ctx.createLinearGradient(0, 300, 300, 300);
+      // addColorStop: 规定渐变对象中的颜色和停止位置
+      // addColorStop(介于 0.0 与 1.0 之间的值，表示渐变中开始与结束之间的位置, 在结束位置显示的 CSS 颜色值)
+      grad.addColorStop(0, "white");
+      grad.addColorStop(0.2, "red");
+      grad.addColorStop(0.6, "#f60");
+      grad.addColorStop(1, "black");
+      ctx.fillStyle = grad;
+      ctx.font = "50px Arial";
+      // fillText(规定在画布上输出的文本, 	开始绘制文本的 x 坐标位置, 开始绘制文本的 y 坐标位置, [允许的最大文本宽度，以像素计])
+      ctx.fillText("Hello World", 0, 250);
+    </script>
+  </body>
+</html>
