@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>canvas2-折线图</title>
+    <title>canvas-折线图</title>
   </head>
   <body>
     <canvas width="500" height="500" id="canvas"></canvas>
@@ -56,6 +56,7 @@
           }
           ctx.stroke();
           ctx.beginPath();
+          // arc(圆的 x 坐标, 圆的 y 坐标, 圆的半径, 起始弧度, 终止弧度, [如果为 true，逆时针绘制圆，反之，顺时针绘制])
           ctx.arc(i * 100 + 55, 460 - dp * 4, 3, 0, 2 * Math.PI);
           ctx.fill();
           ctx.beginPath();

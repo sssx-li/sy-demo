@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>canvas-图片加载</title>
+  </head>
+  <body>
+    <canvas width="500" height="500" id="canvas"></canvas>
+    <script>
+      /** @type { HTMLCanvasElement } */
+      const canvas = document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+
+      // ctx.fillStyle = "gray";
+      // ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const img = new Image();
+      img.addEventListener("load", loadHandler);
+      img.src = "../assets/imgs/1.jpg";
+      function loadHandler(e) {
+        const pat1 = ctx.createPattern(img, "no-repeat");
+        ctx.fillStyle = pat1; // 设置为背景
+        ctx.fillRect(0, 0, img.width, img.height);
+        const pat2 = ctx.createPattern(img, "repeat-y");
+        ctx.fillStyle = pat2;
+        ctx.translate(0, 210);
+        ctx.fillRect(0, 0, img.width, 400);
+      }
+    </script>
+  </body>
+</html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>canvas2-饼图</title>
+    <title>canvas-饼图</title>
   </head>
   <body>
     <canvas width="500" height="500" id="canvas"></canvas>
@@ -27,6 +27,8 @@
         // 弧度
         const angle = proportion + fraction * 2 * Math.PI;
         // 设置颜色
+        // 方法创建放射状/圆形渐变对象。
+        // createRadialGradient(渐变的开始圆的 x 坐标, 	渐变的开始圆的 y 坐标,)
         const grad = ctx.createRadialGradient(250, 250, 0, 250, 250, 100);
         
         grad.addColorStop(0, "white");

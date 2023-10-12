@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>canvas-太极</title>
+  </head>
+  <body>
+    <canvas width="500" height="500" id="canvas"></canvas>
+    <script>
+      /** @type { HTMLCanvasElement } */
+      const canvas = document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#ccc";
+      ctx.fillRect(0, 0, 500, 500);
+
+      ctx.lineWidth = 1;
+      // 白色半圆
+      ctx.beginPath();
+      ctx.fillStyle = "#fff";
+      ctx.arc(250, 250, 100, getRads(-90), getRads(90), false);
+      ctx.fill();
+
+      // 黑色半圆
+      ctx.beginPath();
+      ctx.fillStyle = "#000";
+      ctx.arc(250, 250, 100, getRads(90), getRads(-90), false);
+      ctx.fill();
+
+      // 白色小圆
+      ctx.beginPath();
+      ctx.fillStyle = "#fff";
+      ctx.arc(250, 200, 50, getRads(-90), getRads(90), true);
+      ctx.fill();
+      // 黑色小圆
+      ctx.beginPath();
+      ctx.fillStyle = "#000";
+      ctx.arc(250, 300, 50, getRads(90), getRads(-90), true);
+      ctx.fill();
+
+      // 白色小圆点
+      ctx.beginPath();
+      ctx.fillStyle = "#fff";
+      ctx.arc(250, 300, 10, getRads(0), getRads(360), false);
+      ctx.fill();
+
+      // 黑色小圆点
+      ctx.beginPath();
+      ctx.fillStyle = "#000";
+      ctx.arc(250, 200, 10, getRads(0), getRads(360), false);
+      ctx.fill();
+
+      // 弧度转换
+      function getRads(degress) {
+        return (Math.PI * degress) / 180;
+      }
+    </script>
+  </body>
+</html>
