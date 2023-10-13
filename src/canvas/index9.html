@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>canvas-线条末端样式</title>
+  </head>
+  <body>
+    <canvas width="650" height="650" id="canvas"></canvas>
+    <script>
+      /** @type { HTMLCanvasElement } */
+      const canvas = document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+
+      /*
+        线条末端样式:
+
+        butt：线段末端以方形结束
+        round：线段末端以圆形结束
+        square：线段末端以方形结束，但是增加了一个宽度和线段相同，高度是线段厚度一半的矩形区域。
+      */
+      ctx.beginPath();
+      ctx.moveTo(20, 30);
+      ctx.lineTo(20, 100);
+      ctx.lineWidth = 10;
+      ctx.lineCap = "butt";
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(50, 30);
+      ctx.lineTo(50, 100);
+      ctx.lineWidth = 10;
+      ctx.lineCap = "round";
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(80, 30);
+      ctx.lineTo(80, 100);
+      ctx.lineWidth = 10;
+      ctx.lineCap = "square";
+      ctx.stroke();
+    </script>
+  </body>
+</html>

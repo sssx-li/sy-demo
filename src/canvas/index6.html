@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>canvas-曲线</title>
+  </head>
+  <body>
+    <canvas width="650" height="650" id="canvas"></canvas>
+    <script>
+      /** @type { HTMLCanvasElement } */
+      const canvas = document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#ccc";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.beginPath();
+      // ctx.arc(150, 150, 50, 0, getRads(10), false);
+      ctx.moveTo(50, 50);
+      //参数1、2：控制点1坐标   参数3、4：控制点2坐标  参数4：圆弧半径
+      ctx.arcTo(200, 50, 200, 200, 100);
+      ctx.lineTo(200, 200);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.fillStyle ="#f60"
+      // 起始点
+      ctx.rect(50, 50, 10, 10);
+      // 控制点1
+      ctx.rect(200, 50, 10, 10);
+      // 控制点2
+      ctx.rect(200, 200, 10, 10);
+      ctx.fill();
+
+      function getRads(degress) {
+        return (Math.PI * degress) / 180;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>canvas-线条结合处的样式</title>
+  </head>
+  <body>
+    <canvas width="650" height="650" id="canvas"></canvas>
+    <script>
+      /** @type { HTMLCanvasElement } */
+      const canvas = document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+
+      /*
+        同一个 path 内，设定线条与线条间接合处的样式:
+
+        round 通过填充一个额外的，圆心在相连部分末端的扇形，绘制拐角的形状。 圆角的半径是线段的宽度
+        bevel 在相连部分的末端填充一个额外的以三角形为底的区域， 每个部分都有各自独立的矩形拐角
+        miter(默认) 通过延伸相连部分的外边缘，使其相交于一点，形成一个额外的菱形区域。
+      */
+      const lineJoin = ["round", "bevel", "miter"];
+      ctx.lineWidth = 20;
+
+      for (let i = 0; i < lineJoin.length; i++) {
+        ctx.lineJoin = lineJoin[i];
+        ctx.beginPath();
+        ctx.moveTo(50, 50 + i * 50);
+        ctx.lineTo(100, 100 + i * 50);
+        ctx.lineTo(150, 50 + i * 50);
+        ctx.lineTo(200, 100 + i * 50);
+        ctx.lineTo(250, 50 + i * 50);
+        ctx.stroke();
+      }
+    </script>
+  </body>
+</html>

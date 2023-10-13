@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>canvas-贝塞尔曲线</title>
+  </head>
+  <body>
+    <canvas width="650" height="650" id="canvas"></canvas>
+    <script>
+      /** @type { HTMLCanvasElement } */
+      const canvas = document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#ccc";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.beginPath();
+      // 起始点
+      const startPoint = [10, 200];
+      // 控制点
+      const controlPoint = [40, 100];
+      // 结束点
+      const endPoint = [200, 200];
+
+      ctx.moveTo(startPoint[0], startPoint[1]);
+
+      ctx.quadraticCurveTo(
+        controlPoint[0],
+        controlPoint[1],
+        endPoint[0],
+        endPoint[1]
+      );
+      ctx.stroke();
+
+      ctx.fillStyle = "#f60";
+      ctx.fillRect(startPoint[0], startPoint[1], 10, 10);
+      ctx.fillRect(controlPoint[0], controlPoint[1], 10, 10);
+      ctx.fillRect(endPoint[0], endPoint[1], 10, 10);
+
+      function getRads(degress) {
+        return (Math.PI * degress) / 180;
+      }
+    </script>
+  </body>
+</html>

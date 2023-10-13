@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>canvas-颜色</title>
+  </head>
+  <body>
+    <canvas width="650" height="650" id="canvas"></canvas>
+    <script>
+      /** @type { HTMLCanvasElement } */
+      const canvas = document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+      // ctx.fillStyle = "#ccc";
+      // ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      /* for (var i = 0; i < 6; i++) {
+        for (var j = 0; j < 6; j++) {
+          ctx.fillStyle =
+            "rgb(" +
+            Math.floor(255 - 42.5 * i) +
+            "," +
+            Math.floor(255 - 42.5 * j) +
+            ",0)";
+          ctx.fillRect(j * 50, i * 50, 50, 50);
+        }
+      } */
+
+      for (let i = 0; i < 6; i++) {
+        for (let j = 0; j < 6; j++) {
+          ctx.strokeStyle = `rgb(${randomInt(0, 255)},${randomInt(
+            0,
+            255
+          )},${randomInt(0, 255)})`;
+          ctx.strokeRect(j * 50, i * 50, 40, 40);
+        }
+      }
+      /**
+       返回随机的 [from, to] 之间的整数(包括from，也包括to)
+      */
+      function randomInt(from, to) {
+        return parseInt(Math.random() * (to - from + 1) + from);
+      }
+    </script>
+  </body>
+</html>
