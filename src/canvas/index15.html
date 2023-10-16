@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>canvas-合成</title>
+  </head>
+  <body>
+    <canvas width="650" height="650" id="canvas"></canvas>
+    <script>
+      /** @type { HTMLCanvasElement } */
+      const canvas = document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "blue";
+      ctx.fillRect(0, 0, 200, 200);
+
+      /**
+       * source-over: 这是默认设置，新图像会覆盖在原有图像。
+       * source-in: 仅仅会出现新图像与原来图像重叠的部分，其他区域都变成透明的。(包括其他的老图像区域也会透明)
+       * source-out: 仅仅显示新图像与老图像没有重叠的部分，其余部分全部透明。(老图像也不显示)
+       * source-atop: 新图像仅仅显示与老图像重叠区域。老图像仍然可以显示。
+       * 
+       * destination-over: 新图像会在老图像的下面。
+       * destination-in: 仅仅新老图像重叠部分的老图像被显示，其他区域全部透明。
+       * destination-out: 仅仅老图像与新图像没有重叠的部分。 注意显示的是老图像的部分区域。
+       * destination-atop: 老图像仅仅仅仅显示重叠部分，新图像会显示在老图像的下面。
+       * 
+       * lighter: 新老图像都显示，但是重叠区域的颜色做加处理。
+       * darken: 保留重叠部分最黑的像素。(每个颜色位进行比较，得到最小的)
+       * lighten: 保证重叠部分最量的像素。(每个颜色位进行比较，得到最大的)
+       * xor: 重叠部分会变成透明。
+       * 
+       * copy: 只有新图像会被保留，其余的全部被清除(变透明)。
+      */
+      ctx.globalCompositeOperation = "lighter"; //全局合成操作
+      ctx.fillStyle = "red";
+      ctx.fillRect(100, 100, 200, 200);
+    </script>
+  </body>
+</html>

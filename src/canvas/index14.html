@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>canvas-变形</title>
+  </head>
+  <body>
+    <canvas width="650" height="650" id="canvas"></canvas>
+    <script>
+      /** @type { HTMLCanvasElement } */
+      const canvas = document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+
+      ctx.save(); //保存坐原点平移之前的状态
+      ctx.translate(100, 100);
+      ctx.strokeRect(0, 0, 100, 100);
+      ctx.restore(); //恢复到最初状态
+      ctx.translate(220, 220); // 平移
+      ctx.rotate(getRads(45)); // 旋转
+      ctx.scale(1.2, 1.5); // 缩放
+      // transform(水平缩放, 水平倾斜，垂直倾斜，垂直缩放，水平移动，垂直移动)
+      ctx.transform(1, 1, 0, 1, 0, 0); // 变换矩阵
+      ctx.fillRect(0, 0, 100, 100);
+
+      function getRads(degress) {
+        return (Math.PI * degress) / 180;
+      }
+    </script>
+  </body>
+</html>

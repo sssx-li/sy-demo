@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>canvas-文本</title>
+  </head>
+  <body>
+    <canvas width="650" height="650" id="canvas"></canvas>
+    <script>
+      /** @type { HTMLCanvasElement } */
+      const canvas = document.querySelector("#canvas");
+      const ctx = canvas.getContext("2d");
+
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = "#f60";
+      ctx.shadowOffsetX = 8;
+      ctx.font = "100px sabs-serif";
+      ctx.fillText("Hello World", 10, 100);
+      ctx.strokeText("Hello World", 10, 200);
+    </script>
+  </body>
+</html>
